@@ -1,0 +1,30 @@
+#spring:
+#  application:
+#    name: eureka-client
+#
+#server:
+#  port: 3030
+#  servlet:
+#    context-path: /user
+#
+#eureka:
+#  client:
+#    service-url:
+#      defualtZone:  http://loaclhost:2020/eureka/eureka
+#  instance:
+#    prefer-ip-address: true
+#
+
+
+spring:
+  application:
+    name: user-server
+server:
+  port: 3030
+  servlet:
+    context-path: /user
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:2020/eureka/eureka
+    enabled: true

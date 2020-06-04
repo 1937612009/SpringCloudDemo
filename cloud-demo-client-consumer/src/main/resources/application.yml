@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: consumer-server
+server:
+  port: 5050
+  servlet:
+    context-path: /consumer
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:2020/eureka/eureka
+    enabled: true
+
