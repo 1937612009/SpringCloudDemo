@@ -82,6 +82,11 @@
             <version>2.13.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
 
         <!--  添加springboot fegin依赖，product项目即可以作为生产者，又可以作为消费者-->
         <dependency>

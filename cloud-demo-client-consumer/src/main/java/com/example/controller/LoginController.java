@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import com.example.entity.User;
 import com.example.service.UserFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

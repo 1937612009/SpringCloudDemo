@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.entity.PageBean;
 import com.example.entity.User;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,11 @@ public class UserController {
     @RequestMapping(value = "findUser")
     public User findUser(@RequestBody User user){
         return userService.findUser(user);
+    }
+
+    @RequestMapping(value = "findLimitUser")
+    public List<User> findLimitUser(@RequestBody PageBean page){
+        return userService.findLimitUser(page);
     }
 
 
