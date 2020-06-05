@@ -1,18 +1,22 @@
 package com.example.entity;
 
 
-public class User {
+import com.sun.istack.internal.NotNull;
+
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private Integer id;
 
+    @NotNull
     private String username;
 
+    @NotNull
     private String password;
 
     public User() {
-        this.id = 1;
-        this.username = "1937612009";
-        this.password = "suzhifan";
+
     }
 
     public User(Integer id, String username, String password) {

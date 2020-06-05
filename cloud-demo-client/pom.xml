@@ -19,6 +19,9 @@
         <spring-cloud.version>Finchley.SR1</spring-cloud.version>
     </properties>
 
+    <dependencies>
+
+    </dependencies>
 
     <build>
         <plugins>
