@@ -36,7 +36,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:2020/eureka/eureka
+      defaultZone: http://localhost:2020/eureka/eureka/, http://localhost:4040/eurekas/eureka/
     enabled: true
 mybatis:
   mapper-locations: classpath:mapper/*.xml
@@ -44,3 +44,4 @@ mybatis:
 #  开启驼峰命名
   configuration:
     map-underscore-to-camel-case: true
+

@@ -2,17 +2,21 @@ package com.example.entity;
 
 
 import com.sun.istack.internal.NotNull;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 
 public class User implements Serializable {
 
+    @ApiModelProperty(value = "用户id")
     private Integer id;
 
     @NotNull
+    @ApiModelProperty(value = "用户账号")
     private String username;
 
     @NotNull
+    @ApiModelProperty(value = "用户密码")
     private String password;
 
     public User() {

@@ -1,62 +1,81 @@
 package com.example.controller;
 
+import com.example.entity.JsonResult;
 import com.example.entity.PageBean;
 import com.example.entity.User;
 import com.example.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
+@Api(tags = "用户管理相关接口")
 @RestController
+@RequestMapping("")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
+    @Value("${server.port}")
+    private String port;
 
-    @RequestMapping(value = "getUser")
-    public User getUser(){
+
+    @RequestMapping(value = "getUser", method = RequestMethod.GET)
+    public User getUser() {
         return new User();
     }
 
-    @RequestMapping(value = "login")
-    public String login(@RequestBody @Valid User user){
-        return userService.login(user);
-    }
-    @RequestMapping(value = "addUser")
-    public String addUser(@RequestBody @Valid User user){
-        return userService.addUser(user);
+    @ApiOperation("登录")
+    @PostMapping(value = "login")
+    public JsonResult login(@RequestBody @Valid User user) {
+        return new JsonResult(200, "登陆成功", userService.login(user));
     }
 
-    @RequestMapping(value = "updateUser")
-    public String updateUser(@RequestBody @Valid User user){
-        return userService.updateUser(user);
+    @ApiOperation("添加用户")
+    @PostMapping(value = "addUser")
+    public JsonResult addUser(@RequestBody @Valid User user) {
+        return new JsonResult(200, userService.addUser(user));
     }
 
-    @RequestMapping(value = "delUser")
-    public String delUser(@RequestBody User user){
-        return userService.delUser(user);
+    @ApiOperation("更新用户")
+    @PostMapping(value = "updateUser")
+    public JsonResult updateUser(@RequestBody @Valid User user) {
+        return new JsonResult(200, userService.updateUser(user));
     }
 
-    @RequestMapping(value = "findAll")
-    public List<User> findAll(){
-        return userService.findAll();
+    @ApiOperation("删除用户")
+    @PostMapping(value = "delUser")
+    public JsonResult delUser(@RequestBody User user) {
+        return new JsonResult(200, userService.delUser(user));
     }
 
-    @RequestMapping(value = "findUser")
-    public User findUser(@RequestBody User user){
-        return userService.findUser(user);
+    @ApiOperation("获取所有用户")
+    @GetMapping(value = "findAll")
+    public JsonResult findAll() {
+        return new JsonResult(200, "获取成功", userService.findAll());
     }
 
-    @RequestMapping(value = "findLimitUser")
-    public List<User> findLimitUser(@RequestBody PageBean page){
-        return userService.findLimitUser(page);
+    @ApiOperation("获取用户详细信息")
+    @GetMapping(value = "findUser")
+    public JsonResult findUser(@RequestBody User user) {
+        return new JsonResult(200, "获取成功", userService.findUser(user));
     }
 
+    @ApiOperation("分页查询用户")
+    @PostMapping(value = "findLimitUser")
+    public JsonResult findLimitUser(@RequestBody PageBean page) {
+        return new JsonResult(200, "获取成功", userService.findLimitUser(page));
+    }
+
+    @ApiOperation("端口")
+    @PostMapping(value = "index")
+    public JsonResult index() {
+        return new JsonResult(200, "获取成功", this.port);
+    }
 
 
 }

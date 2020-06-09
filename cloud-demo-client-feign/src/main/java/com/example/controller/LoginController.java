@@ -1,13 +1,17 @@
 package com.example.controller;
 
+import com.example.entity.JsonResult;
+import com.example.entity.PageBean;
+import com.example.entity.User;
 import com.example.service.UserFeignService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 public class LoginController {
@@ -24,33 +28,45 @@ public class LoginController {
 
 
     @RequestMapping(value = "toLogin")
-    public String login(@RequestBody User user){
+    public JsonResult login(@RequestBody User user){
        return userService.login(user);
     }
 
     @RequestMapping(value = "toAddUser")
-    public String addUser(@RequestBody @Valid User user){
+    public JsonResult addUser(@RequestBody @Valid User user){
         return userService.addUser(user);
     }
 
     @RequestMapping(value = "toUpdateUser")
-    public String updateUser(@RequestBody @Valid User user){
+    public JsonResult updateUser(@RequestBody @Valid User user){
         return userService.updateUser(user);
     }
 
     @RequestMapping(value = "toDelUser")
-    public String delUser(@RequestBody User user){
+    public JsonResult delUser(@RequestBody User user){
         return userService.delUser(user);
     }
 
     @RequestMapping(value = "toFindAll")
-    public List<User> findAll(){
+    public JsonResult findAll(){
         return userService.findAll();
     }
 
     @RequestMapping(value = "toFindUser")
-    public User findUser(@RequestBody User user){
+    public JsonResult findUser(@RequestBody User user){
         return userService.findUser(user);
+    }
+
+    @ApiOperation("分页查询用户")
+    @PostMapping(value = "toFindLimitUser")
+    public JsonResult findLimitUser(@RequestBody PageBean page) {
+        return userService.findLimitUser(page);
+    }
+
+    @ApiOperation("端口")
+    @PostMapping(value = "toIndex")
+    public JsonResult index() {
+        return userService.index();
     }
 
 

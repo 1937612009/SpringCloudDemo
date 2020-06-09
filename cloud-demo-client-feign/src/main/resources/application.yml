@@ -19,8 +19,14 @@ eureka:
     service-url:
       defaultZone: http://localhost:2020/eureka/eureka
     enabled: true
+  instance:
+    prefer-ip-address: true
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
+# 熔断机制
+feign:
+  hystrix:
+    enabled: true
