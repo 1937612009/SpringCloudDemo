@@ -1,0 +1,24 @@
+server:
+  port: 4040
+  servlet:
+    context-path: /eurekas
+
+spring:
+  application:
+    name: eureka-server-two  #服务名字
+
+eureka:
+  client:
+    fetch-registry: true #是否检索服务
+    register-with-eureka: true #不注册自己
+    service-url:
+      defaultZone: http://eureka1:2020/eureka/eureka/, http://eureka2:4040/eurekas/eureka/
+      enabled: true
+  instance:
+    hostname: eureka2
+  #    prefer-ip-address: true
+
+  server:
+    enable-self-preservation: false  #设为false，关闭自我保护
+    eviction-interval-timer-in-ms: 100000  #扫描失效服务的间隔时间
+

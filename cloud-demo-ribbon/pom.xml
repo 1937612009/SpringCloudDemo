@@ -9,21 +9,28 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>cloud-demo-client-consumer</artifactId>
+    <artifactId>cloud-demo-ribbon</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cloud-demo-client-consumer</name>
+    <name>cloud-demo-ribbon</name>
     <description>Demo project for Spring Boot</description>
 
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
     <dependencies>
+
         <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>cloud-demo-client</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
         </dependency>
 
-
-
     </dependencies>
+
 
     <build>
         <plugins>
